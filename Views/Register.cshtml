@@ -1,0 +1,120 @@
+﻿@{
+    var formDictionary = new Dictionary<string, object> {
+        {"name", "registerForm"},
+        {"novalidate", "novalidate"}
+    };
+
+    var minLength = ViewData["PasswordLength"];
+}
+
+<div data-ng-controller="RegisterCtrl as register">
+
+    @if (Html.ValidationSummary() != null)
+    {
+        <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <i class="fa fa-times-circle"></i>&nbsp;&nbsp;@T("Account creation was unsuccessful. Please correct the errors and try again.")
+            <p>@Html.ValidationSummary()</p>
+        </div>
+    }
+
+    <h1>@Html.TitleForPage(T("Create a New Account").ToString())</h1>
+    <div class="well">
+        <p>@T("Passwords are required to be a minimum of {0} characters in length.", minLength)</p>
+        @using (Html.BeginFormAntiForgeryPost(Url.Action("Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, formDictionary))
+        {
+            <fieldset>
+                <legend>@T("Account Information")</legend>
+                <div class="form-group"
+                     data-ng-class="{ 'has-error has-feedback': registerForm.username.$touched && registerForm.username.$invalid, 'has-success has-feedback': registerForm.username.$valid }">
+                    <label for="username" class="control-label">@T("Username")</label>
+                    <input type="text" name="username" class="form-control" required
+                           data-ng-minlength="6"
+                           ng-model="register.user.username" />
+                    <span class="fa fa-check form-control-feedback"
+                          data-ng-if="registerForm.username.$valid"></span>
+                    <span class="fa fa-close form-control-feedback"
+                          data-ng-if="registerForm.username.$touched && registerForm.username.$invalid"></span>
+                </div>
+                <div class="form-group"
+                     data-ng-class="{ 'has-error': registerForm.firstname.$dirty && registerForm.firstname.$invalid }">
+                    <label for="firstname" class="control-label">@T("Firstname")</label>
+                    <input type="text" name="firstname" class="form-control" required
+                           ng-model="register.user.firstname" />
+                </div>
+                <div class="form-group"
+                     data-ng-class="{ 'has-error': registerForm.lastname.$dirty && registerForm.lastname.$invalid }">
+                    <label for="lastname" class="control-label">@T("Lastname")</label>
+                    <input type="text" name="lastname" class="form-control" required
+                           ng-model="register.user.lastname" />
+                </div>
+                <div class="form-group"
+                     data-ng-class="{ 'has-error has-feedback': registerForm.email.$touched && registerForm.email.$invalid, 'has-success has-feedback': registerForm.email.$valid }">
+                    <label for="email" class="control-label">@T("Email")</label>
+                    <input type="email" name="email" class="form-control" required
+                           ng-model="register.user.email" />
+                    <span class="fa fa-check form-control-feedback"
+                          data-ng-if="registerForm.email.$valid"></span>
+                    <span class="fa fa-close form-control-feedback"
+                          data-ng-if="registerForm.email.$touched && registerForm.email.$invalid"></span>
+                </div>
+                <div class="form-group"
+                     data-ng-class="{ 'has-error has-feedback': registerForm.password.$touched && registerForm.password.$invalid, 'has-success has-feedback': registerForm.password.$valid }">
+                    <label for="password" class="control-label">@T("Password")</label>
+                    <input type="password" name="password" class="form-control" required
+                           data-ng-minlength="@minLength"
+                           ng-model="register.user.password" />
+                    <span class="fa fa-check form-control-feedback"
+                          data-ng-if="registerForm.password.$valid"></span>
+                    <span class="fa fa-close form-control-feedback"
+                          data-ng-if="registerForm.password.$touched && registerForm.password.$invalid"></span>
+                </div>
+                <div class="form-group"
+                     data-ng-class="{ 'has-error has-feedback': registerForm.confirmPassword.$touched && registerForm.confirmPassword.$invalid, 'has-success has-feedback': registerForm.confirmPassword.$valid && register.confirmPassword === register.password }">
+                    <label for="confirmPassword" class="control-label">@T("Confirm Password")</label>
+                    <input type="password" name="confirmPassword" class="form-control" required
+                           data-ng-minlength="@ViewData["PasswordLength"]"
+                           ng-model="register.user.confirmPassword" />
+                    <span class="fa fa-check form-control-feedback"
+                          data-ng-if="registerForm.confirmPassword.$valid && register.confirmPassword === register.password"></span>
+                    <span class="fa fa-close form-control-feedback"
+                          data-ng-if="registerForm.confirmPassword.$touched && registerForm.confirmPassword.$invalid"></span>
+                </div>
+                <div class="form-group">
+                    <button class="primaryAction btn btn-primary" type="submit"
+                            ng-disabled="registerForm.$invalid">
+                        @T("Register")
+                        </button>
+                    </div>
+                </fieldset>
+        }
+    </div>
+</div>
+
+@using (Script.Foot()) {
+    
+    <script>
+
+        (function(ng) {
+
+            ng.module("masterApp").controller("RegisterCtrl", [
+                "$http", function($http) {
+
+                    var self = this;
+                    var url = "@Url.Action("ValidateUserName", new { Controller = "Validate", Area = "ngDevq" })";
+                    console.log(url);
+
+                    self.validateUsername = function () {
+                        $http.get(url + "?fieldValue=" + self.user.username).success(function(response) {
+                            self.user.usernameValid = response == true;
+                        });
+                    }
+
+                }
+            ]);
+
+        })(angular);
+
+</script>
+    
+}

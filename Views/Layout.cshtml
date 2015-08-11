@@ -1,0 +1,274 @@
+﻿@functions {
+    // To support the layout classifaction below. Implementing as a razor function because we can, could otherwise be a Func<string[], string, string> in the code block following.
+    string CalcuClassify(string[] zoneNames, string classNamePrefix)
+    {
+        var zoneCounter = 0;
+        var zoneNumsFilled = string.Join("", zoneNames.Select(zoneName => { ++zoneCounter; return Model[zoneName] != null ? zoneCounter.ToString() : ""; }).ToArray());
+        return HasText(zoneNumsFilled) ? classNamePrefix + zoneNumsFilled : "";
+    }
+}
+@{
+    Display.Insertions();
+
+    Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+
+    /* Layout classification based on filled zones
+    ***************************************************************/
+
+    //Add classes to the wrapper div to toggle aside widget zones on and off
+    var asideClass = CalcuClassify(new[] { "AsideFirst", "AsideSecond" }, "aside-"); // for aside-1, aside-2 or aside-12 if any of the aside zones are filled
+    if (HasText(asideClass))
+    {
+        Model.Classes.Add(asideClass);
+    }
+
+    //Add classes to the wrapper div to toggle tripel widget zones on and off
+    var tripelClass = CalcuClassify(new[] { "TripelFirst", "TripelSecond", "TripelThird" }, "tripel-"); // for tripel-1, triple-2, etc. if any of the tripel zones are filled
+    if (HasText(tripelClass))
+    {
+        Model.Classes.Add(tripelClass);
+    }
+
+    //Add classes to the wrapper div to toggle quad widget zones on and off
+    var footerQuadClass = CalcuClassify(new[] { "FooterQuadFirst", "FooterQuadSecond", "FooterQuadThird", "FooterQuadFourth" }, "split-"); // for quad-1, quad-2, etc. if any of the quad zones are filled
+    if (HasText(footerQuadClass))
+    {
+        Model.Classes.Add(footerQuadClass);
+    }
+
+    // Adds user sign in, dashboard links etc to the bottom of the page
+    WorkContext.Layout.BottomDweller.Add(New.User(), "1");
+
+    Model.Id = "layout-wrapper";
+    var tag = Tag(Model, "div");
+
+    var showAsideFirst = Model.AsideFirst != null;
+    var showAsideSecond = Model.AsideSecond != null;
+
+    string contentClass;
+    if (showAsideFirst && !showAsideSecond || !showAsideFirst && showAsideSecond) {
+        contentClass = "col-md-9";
+    }
+    else if (!showAsideFirst) {
+        contentClass = "col-md-12";
+    }
+    else {
+        contentClass = "col-md-6";
+    }
+}
+
+
+@tag.StartElement
+
+<!-- Zone: Header -->
+@if (Model.Header != null)
+{
+    <header id="layout-header" class="group">
+        <div id="header">
+            @Zone(Model.Header)
+        </div>
+    </header>
+}
+
+<!-- Zone: Navigation -->
+@if (Model.Navigation != null)
+{
+    <div class="navbar-wrapper">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Branding -->
+                    @Display.Branding()
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navigation">
+                    @Zone(Model.Navigation)
+                </div>
+            </div>
+        </nav>
+    </div>
+}
+
+<!-- Zone: Featured -->
+@if (Model.Featured != null)
+{
+    <div id="layout-featured" class="group">
+        @Zone(Model.Featured)
+    </div>
+}
+
+<!-- Zone: Before main -->
+@if (Model.BeforeMain != null)
+{
+    <div id="layout-before-main" class="group">
+        @Zone(Model.BeforeMain)
+    </div>
+}
+
+<!-- Zone: Main layout -->
+<div id="layout-main-container" class="container">
+    <div id="layout-main" class="group">
+
+        <!-- Zone: Messages -->
+        @if (Model.Messages != null)
+        {
+            <div id="messages">
+                @Zone(Model.Messages)
+            </div>
+        }
+
+        <!-- Zone: Aside first -->
+        @if (showAsideFirst)
+        {
+            <aside id="aside-first" class="aside-first group col-md-3">
+                @Zone(Model.AsideFirst)
+            </aside>
+        }
+        <div id="layout-content" class="group @contentClass">
+
+            <!-- Zone: Before content -->
+            @if (Model.BeforeContent != null)
+            {
+                <div id="before-content">
+                    @Zone(Model.BeforeContent)
+                </div>
+            }
+
+            <!-- Zone: Content -->
+            @if (Model.Content != null)
+            {
+                <div id="content" class="group">
+                    @Zone(Model.Content)
+                </div>
+            }
+
+            <!-- Zone: After content -->
+            @if (Model.AfterContent != null)
+            {
+                <div id="after-content">
+                    @Zone(Model.AfterContent)
+                </div>
+            }
+        </div>
+
+        <!-- Zone: Aside second -->
+        @if (showAsideSecond)
+        {
+            <aside id="aside-second" class="aside-second col-md-3">
+                @Zone(Model.AsideSecond)
+            </aside>
+        }
+    </div>
+</div>
+
+<!-- Zone: After main -->
+@if (Model.AfterMain != null)
+{
+    <div id="layout-after-main" class="group">
+        @Zone(Model.AfterMain)
+    </div>
+}
+
+<div class="container">
+    <!-- Zone: Triples -->
+    @if (Model.TripelFirst != null || Model.TripelSecond != null || Model.TripelThird != null)
+    {
+        <div id="layout-tripel-container">
+            <div id="layout-tripel" class="group">
+                @if (Model.TripelFirst != null)
+                {
+                    <div id="tripel-first">
+                        @Zone(Model.TripelFirst)
+                    </div>
+                }
+                @if (Model.TripelSecond != null)
+                {
+                    <div id="tripel-second">
+                        @Zone(Model.TripelSecond)
+                    </div>
+                }
+                @if (Model.TripelThird != null)
+                {
+                    <div id="tripel-third">
+                        @Zone(Model.TripelThird)
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+@tag.EndElement
+
+<!-- Zone: Footer -->
+@if (Model.Footer != null || Model.FooterQuadFirst != null || Model.FooterQuadSecond != null || Model.FooterQuadThird != null || Model.FooterQuadFourth != null)
+{
+    <div id="layout-footer" class="group">
+        <hr />
+        <div class="container">
+            <footer id="footer">
+                @if (Model.FooterQuadFirst != null || Model.FooterQuadSecond != null || Model.FooterQuadThird != null || Model.FooterQuadFourth != null) {
+                    <div id="footer-quad" class="group">
+                        @if (Model.FooterQuadFirst != null) {
+                            <div id="footer-quad-first">
+                                @Zone(Model.FooterQuadFirst)
+                            </div>
+                        }
+                        @if (Model.FooterQuadSecond != null) {
+                            <div id="footer-quad-second">
+                                @Zone(Model.FooterQuadSecond)
+                            </div>
+                        }
+                        @if (Model.FooterQuadThird != null) {
+                            <div id="footer-quad-third">
+                                @Zone(Model.FooterQuadThird)
+                            </div>
+                        }
+                        @if (Model.FooterQuadFourth != null) {
+                            <div id="footer-quad-fourth">
+                                @Zone(Model.FooterQuadFourth)
+                            </div>
+                        }
+                    </div>
+                }
+                @if (Model.Footer != null) {
+                    <div id="footer-sig" class="group">
+                        @Zone(Model.Footer)
+                    </div>
+                }
+            </footer>
+        </div>
+    </div>
+}
+
+<!-- To top -->
+<div id="toTop" tooltip="Go to top" tooltip-placement="left">
+    <h1><i class="fa fa-angle-double-up"></i></h1>
+</div>
+
+@using (Script.Foot())
+{
+    <script>
+        jQuery(document).ready(function() {
+            var offset = 250;
+            var duration = 300;
+            jQuery(window).scroll(function() {
+                if (jQuery(this).scrollTop() > offset) {
+                    jQuery('#toTop').fadeIn(duration);
+                } else {
+                    jQuery('#toTop').fadeOut(duration);
+                }
+            });
+
+            jQuery('#toTop').click(function (event) {
+                event.preventDefault();
+                jQuery('html, body').animate({ scrollTop: 0 }, duration);
+                return false;
+            });
+        });
+    </script>
+}

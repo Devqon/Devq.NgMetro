@@ -1,0 +1,20 @@
+﻿@using Orchard.ContentPicker.Fields
+@using Orchard.Utility.Extensions;
+
+@{
+    var field = (ContentPickerField) Model.ContentField;
+    string name = field.DisplayName;
+    var contentItems = field.ContentItems.ToList();
+}
+<div class="row content-picker-field content-picker-field-@name.HtmlClassify() col-xs-12">
+    <h1 class="name">@T.Plural("Author", "Authors", contentItems.Count())</h1>
+    @if(contentItems.Any()) {
+        foreach(var contentItem in contentItems) {
+            @Display(BuildDisplay(contentItem, "Mini"))
+        }
+    }
+    else {
+        <span class="value">@T("Authors unknown.")</span>
+    }
+</div>
+

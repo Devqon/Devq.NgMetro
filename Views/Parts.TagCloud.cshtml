@@ -1,0 +1,14 @@
+﻿@using Newtonsoft.Json
+@{
+    Style.Require("jQCloud");
+    Script.Require("Angular_jQCloud");
+
+    Script.Include("app/tagcloud/tagcloudcontroller.js").AtFoot();
+    
+    var json = JsonConvert.SerializeObject(Model.TagCounts);
+    var url = Url.Action("Search", new {Controller = "Home", Area = "Orchard.Tags", TagName = "placeholder"});
+}
+
+<div data-ng-controller="tagCloudCtrl as tagCloud" data-ng-init="tagCloud.init(@json, '@url')">
+    <jqcloud words="tagCloud.words" height="350" steps="@Model.ContentPart.Buckets" autoresize="true"></jqcloud>
+</div>

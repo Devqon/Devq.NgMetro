@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20255439-C262-4A6A-99BA-F9C2B7E995DC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Devq.NgMetro</RootNamespace>
+    <AssemblyName>Devq.NgMetro</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Scripts\jqcloud\angular-jqcloud.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\npm.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\jqcloud\jqcloud.js" />
+    <Content Include="Scripts\jqcloud\jqcloud.min.js" />
+    <Content Include="Styles\animate.css" />
+    <Content Include="Styles\Animations.css">
+      <DependentUpon>Animations.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Animations.min.css">
+      <DependentUpon>Animations.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Styles\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Styles\bootstrap\css\bootstrap.css" />
+    <Content Include="Styles\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Styles\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Styles\jqcloud\jqcloud.css" />
+    <Content Include="Styles\jqcloud\jqcloud.min.css" />
+    <Content Include="Styles\metro-bootstrap\css\metro-bootstrap.css" />
+    <Content Include="Styles\metro-bootstrap\css\metro-bootstrap.min.css" />
+    <Content Include="Styles\metro-bootstrap\fonts\font-awesome\0a799148.fontawesome-webfont.svg" />
+    <Content Include="Styles\metro-bootstrap\fonts\glyphicons\32941d63.glyphicons-halflings-regular.svg" />
+    <Content Include="Styles\Base.css">
+      <DependentUpon>Base.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Base.min.css">
+      <DependentUpon>Base.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Site.css">
+      <DependentUpon>Site.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Variables.css">
+      <DependentUpon>Variables.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Variables.min.css">
+      <DependentUpon>Variables.css</DependentUpon>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Web.config" />
+    <Content Include="Content\Web.config" />
+    <Content Include="Theme.txt" />
+    <Content Include="Theme.png" />
+    <Content Include="Placement.info">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
+      <Project>{2D1D92BB-4555-4CBE-8D0E-63563D6CE4C6}</Project>
+      <Name>Orchard.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
+      <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
+      <Name>Orchard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Devq.ExtendedBlog\Devq.ExtendedBlog.csproj">
+      <Project>{d3a2dcaa-0a80-4790-910c-9b6efa0df6a2}</Project>
+      <Name>Devq.ExtendedBlog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Blogs\Orchard.Blogs.csproj">
+      <Project>{63fbd4d9-e1da-4a7b-aa6a-d6074fe50867}</Project>
+      <Name>Orchard.Blogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Comments\Orchard.Comments.csproj">
+      <Project>{14c049fd-b35b-415a-a824-87f26b26e7fd}</Project>
+      <Name>Orchard.Comments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.ContentPicker\Orchard.ContentPicker.csproj">
+      <Project>{f301ef7d-f19c-4d83-aa94-cb64f29c037d}</Project>
+      <Name>Orchard.ContentPicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.DynamicForms\Orchard.DynamicForms.csproj">
+      <Project>{82190f52-2901-46d6-8a4c-34649959483f}</Project>
+      <Name>Orchard.DynamicForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Fields\Orchard.Fields.csproj">
+      <Project>{3787dde5-e5c8-4841-bda7-dcb325388064}</Project>
+      <Name>Orchard.Fields</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Layouts\Orchard.Layouts.csproj">
+      <Project>{6bd8b2fa-f2e3-4ac8-a4c3-2925a653889a}</Project>
+      <Name>Orchard.Layouts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Search\Orchard.Search.csproj">
+      <Project>{4be4eb01-ac56-4048-924e-2ca77f509aba}</Project>
+      <Name>Orchard.Search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Tags\Orchard.Tags.csproj">
+      <Project>{5d0f00f0-26c9-4785-ad61-b85710c60eb0}</Project>
+      <Name>Orchard.Tags</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Users\Orchard.Users.csproj">
+      <Project>{79aed36e-abd0-4747-93d3-8722b042454b}</Project>
+      <Name>Orchard.Users</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\metro-bootstrap\css\metro-bootstrap.css.map" />
+    <Content Include="Styles\metro-bootstrap\fonts\font-awesome\4587b062.fontawesome-webfont.ttf" />
+    <Content Include="Styles\metro-bootstrap\fonts\font-awesome\8ebff60d.FontAwesome.otf" />
+    <Content Include="Styles\metro-bootstrap\fonts\font-awesome\cf210dd5.fontawesome-webfont.eot" />
+    <Content Include="Styles\metro-bootstrap\fonts\font-awesome\e683bb4d.fontawesome-webfont.woff" />
+    <Content Include="Styles\metro-bootstrap\fonts\glyphicons\38e827a0.glyphicons-halflings-regular.ttf" />
+    <Content Include="Styles\metro-bootstrap\fonts\glyphicons\deae260a.glyphicons-halflings-regular.woff" />
+    <Content Include="Styles\metro-bootstrap\fonts\glyphicons\e56f39cb.glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Styles\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Styles\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Styles\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Styles\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Styles\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Branding.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BadgeOfHonor.cshtml" />
+    <Content Include="Views\Menu.cshtml" />
+    <Content Include="Views\MenuItem.cshtml" />
+    <Content Include="Views\MenuItemLinkdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Document.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Resources.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Insertions.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\LogOn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu-main-menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Users\Account\AccessDenied.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailFail.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailSent.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailSuccess.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\LostPassword.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\RegistrationPending.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\RequestLostPassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\App.ts" />
+    <TypeScriptCompile Include="Scripts\app\Config.ts" />
+    <TypeScriptCompile Include="Scripts\app\Constants.ts" />
+    <TypeScriptCompile Include="Scripts\app\tagcloud\TagCloudController.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contrib.Profile\Home\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Message.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content.SaveButton.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Site.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Site.css.map">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CommentGravatar.cshtml" />
+    <Content Include="Views\CommentReplyButton.cshtml" />
+    <Content Include="Views\Content-Blog.Detail.cshtml" />
+    <Content Include="Views\Content-BlogPost.Summary.cshtml" />
+    <Content Include="Views\Parts.Blogs.RecentBlogPosts.cshtml" />
+    <Content Include="Views\Parts.Comment.cshtml" />
+    <Content Include="Views\Parts.CommentForm.cshtml" />
+    <Content Include="Views\Parts.Comments.Count.cshtml" />
+    <Content Include="Views\Parts.Common.Body.Summary.cshtml" />
+    <Content Include="Views\Parts.ListOfComments.cshtml" />
+    <Content Include="Views\Parts.Tags.ShowTags.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gravatar\Gravatar.cs" />
+    <Compile Include="Gravatar\Gremail.cs" />
+    <Compile Include="Gravatar\Grofile.cs" />
+    <Compile Include="Gravatar\GrofileInfo.cs" />
+    <Compile Include="Gravatar\Html\HtmlHelperExtensions.cs" />
+    <Compile Include="Gravatar\Html\UrlHelperExtensions.cs" />
+    <Compile Include="ResourceManifest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.Comment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content.ControlWrapper.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Column.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Grid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Base.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Base.css.map">
+      <DependentUpon>Base.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Variables.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Variables.css.map">
+      <DependentUpon>Variables.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-BlogPost.Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-User.Mini.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Animations.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Animations.css.map">
+      <DependentUpon>Animations.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\Taxonomy-CheckList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\TextArea.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\TextField.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\ValidationSummary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\ValidationMessage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Widget-SocialLinksWidget.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.TagCloud.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Blogs.BlogArchives.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Search.SearchForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Search.SearchForm-Navigation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Blogs.BlogPost.List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fields.ContentPicker-Authors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Tags\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Title-BlogPost.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Common.Metadata-BlogPost.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CarouselHome.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Tags\Home\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contrib.Profile\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-BlogPost.Mini.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\Author.Tags.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\Author.Items.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>
+    <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+    <!-- If this is an area parent project, uncomment the following lines:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+    -->
+  </Target>
+  <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://orchard.codeplex.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,44 @@
+﻿@using Orchard.Blogs.Extensions;
+@using Orchard.Blogs.Models;
+@{
+    Style.Require("BlogsArchives");
+    Script.Require("BlogsArchives");
+    IEnumerable<KeyValuePair<ArchiveData, int>> archives = Model.Archives;
+    var dateTimeLocalization = WorkContext.Resolve<Orchard.Localization.Services.IDateTimeFormatProvider>();
+    var monthNames = dateTimeLocalization.MonthNames.ToArray();
+}
+
+<div class="archives">
+    @if (archives.Any()) { 
+        int lastYear = archives.First().Key.Year;
+        int firstYear = archives.Last().Key.Year;
+
+        <accordion close-others="oneAtATime">
+            @for (var year = lastYear; year >= firstYear; year--)
+            {
+                var yearMonths = archives.Where(m => m.Key.Year == year);
+                var yearVariable = "year" + year + ".open";
+                var shouldBeOpen = year == lastYear;
+
+                <accordion-group class="list-group no-padding" is-open="@yearVariable"
+                                 data-ng-init="@yearVariable = @shouldBeOpen.ToString().ToLower()">
+                    <accordion-heading>
+                        @year
+                        <i class="pull-right fa" data-ng-class="{ 'fa-chevron-down': @yearVariable, 'fa-chevron-up': !@yearVariable }"></i>
+                    </accordion-heading>
+                    @foreach (var t in yearMonths)
+                    {
+                        <a href="@Url.BlogArchiveMonth((BlogPart)Model.Blog, t.Key.Year, t.Key.Month)" class="list-group-item small">
+                            @Html.Raw(string.Format("{0} ({1})", monthNames[t.Key.ToDateTime().Month - 1], t.Value))
+                        </a>
+                    }
+                </accordion-group>
+            }
+        </accordion>
+
+    }
+    else
+    {
+        <div class="message info">@T("None found")</div>
+    }
+</div>

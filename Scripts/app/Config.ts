@@ -1,0 +1,5 @@
+﻿module MasterApp {
+
+    'use strict';
+
+} 

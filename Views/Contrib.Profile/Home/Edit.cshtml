@@ -1,0 +1,15 @@
+
+@if (Html.ValidationSummary() != null)
+{
+    <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="fa fa-times-circle"></i>&nbsp;&nbsp;@T("Login was unsuccessful. Please correct the errors and try again.")
+        <p>@Html.ValidationSummary()</p>
+    </div>
+}
+
+<h1>@Html.TitleForPage(T("Edit Profile").Text)</h1>
+
+@using (Html.BeginFormAntiForgeryPost()) {
+    @Display(Model)
+}

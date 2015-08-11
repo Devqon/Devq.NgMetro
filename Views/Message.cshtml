@@ -1,0 +1,10 @@
+﻿@{
+    var type = Model.Type.ToString();
+    var errorClass = type == "Error" ? "alert-danger" : type == "Information" ? "alert-info" : "alert-warning";
+    var icon = type == "Error" ? "times-circle" : type == "Information" ? "info-circle" : "warning";
+}
+
+<div class="alert alert-dismissable @errorClass fade in">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <i class="fa fa-@icon"></i>&nbsp;&nbsp;@Html.Raw(Html.Encode(Model.Message).Replace("\n", "<br />"))
+</div>

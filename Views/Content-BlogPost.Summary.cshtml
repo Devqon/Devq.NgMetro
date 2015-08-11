@@ -1,0 +1,50 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Tags.ViewModels;
+@using System.Linq;
+
+@{
+    var blogPost = Model.ContentItem;
+    var authors = ((IEnumerable<IContent>) blogPost.AuthorablePart.Authors.ContentItems).ToList();
+    dynamic author = null;
+    if (authors.Any()) {
+        author = authors.First();
+    }
+    const string defaultImage = "http://www.lorempixel.com/200/200/people";
+    var imageUrl = author != null ? author.AuthorPart.Image.FirstMediaUrl ?? defaultImage : defaultImage;
+}
+
+<h1><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h1>
+
+<div class="row">
+    <div class="col-sm-2">
+        @if (author != null)
+        {
+            <a href="@Url.Action("Index", new {username = author.UserPart.UserName, Controller = "Home", Area = "Contrib.Profile"})">
+                <img src="@imageUrl" class="img-responsive img-thumbnail img-author" />
+            </a>
+        }
+        else
+        {
+            <img src="@defaultImage" class="img-responsive img-thumbnail" />
+        }
+    </div>
+    <div class="col-sm-10">
+        <div class="pull-right">
+            <i class="fa fa-comments"></i> <a href="@Url.ItemDisplayUrl((IContent)blogPost)#comments-anchor">@Display(Model.CommentsCount)</a>
+        </div>
+        <div>
+            <i class="fa fa-calendar"></i> <time datetime="@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("yyyy-MM-dd")">@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("dddd, MMMM d, yyyy")</time>
+        </div>
+        @if (Model.Tags.Items.Count > 0 && ((IEnumerable<ShowTagViewModel>)Model.Tags.Items[0].Tags).Any())
+        {
+            @Display(Model.Tags)
+        }
+    </div>
+</div>
+
+<div>
+    <br/>
+    @Display(Model.Summary)
+</div>
+
+<hr />

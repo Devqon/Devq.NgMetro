@@ -1,0 +1,10 @@
+.profile-image {
+  transition: 500ms all;
+  -webkit-transition: 500ms all;
+  border: 0 solid black;
+  width: 200px;
+  height: 200px; }
+  .profile-image:hover {
+    border-width: 10px; }
+
+/*# sourceMappingURL=Animations.css.map */
