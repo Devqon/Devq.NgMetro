@@ -23,6 +23,8 @@ App_Data
 [Bb]in
 [Oo]bj
 
+.sass-cache
+
 *.cache
 *.meta
 *.obj
