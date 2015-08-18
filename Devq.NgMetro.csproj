@@ -136,10 +136,6 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Devq.ExtendedBlog\Devq.ExtendedBlog.csproj">
-      <Project>{d3a2dcaa-0a80-4790-910c-9b6efa0df6a2}</Project>
-      <Name>Devq.ExtendedBlog</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Orchard.Blogs\Orchard.Blogs.csproj">
       <Project>{63fbd4d9-e1da-4a7b-aa6a-d6074fe50867}</Project>
       <Name>Orchard.Blogs</Name>
@@ -263,9 +259,6 @@
     <Content Include="Views\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Content.SaveButton.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Styles\Site.scss" />
   </ItemGroup>
   <ItemGroup>
@@ -287,6 +280,7 @@
     <Content Include="Views\Parts.Tags.ShowTags.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditorShapeProvider.cs" />
     <Compile Include="Gravatar\Gravatar.cs" />
     <Compile Include="Gravatar\Gremail.cs" />
     <Compile Include="Gravatar\Grofile.cs" />
@@ -344,9 +338,6 @@
     <Content Include="Views\Elements\Taxonomy-CheckList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Elements\TextArea.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Elements\TextField.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -401,10 +392,56 @@
     <Content Include="Views\Content-BlogPost.Mini.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Author.Tags.cshtml" />
+    <Content Include="Views\Parts\Author.Items.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Author.Items.cshtml" />
+    <Content Include="Views\Content-CategoryTerm.Mini.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.LevelTermsWidget.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.MenuWidget-Content.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CategoryTile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.TermPart.Children-CategoryTerm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content.SaveButton-Product.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Fields\Boolean.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Fields\DateTime.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Fields\Enumeration.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Fields\Input.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Fields\Link.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Fields\Numeric.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Parts.Title.TitlePart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Parts.Autoroute.Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Frontend\Fields\TaxonomyField.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Parts\Author.Tags.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

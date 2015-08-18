@@ -1,0 +1,11 @@
+﻿@{
+    var href = Model.Href;
+    var text = Model.Text;
+    var color = Model.Color ?? "";
+}
+
+<a href="@href">
+    <div class="tile tile-medium tile-@color">
+        <h1>@text</h1>
+    </div>
+</a>

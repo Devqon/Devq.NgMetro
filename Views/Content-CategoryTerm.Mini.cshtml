@@ -1,0 +1,25 @@
+﻿@using Orchard.Utility.Extensions;
+@{
+    if (Model.Title != null) {
+        Layout.Title = Model.Title;
+    }
+
+    Model.Classes.Add("content-item");
+    
+    var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+    Model.Classes.Add(contentTypeClassName);
+    Model.Classes.Add("tile tile-medium tile-wisteria");
+    
+    var tag = Tag(Model, "div");
+
+    //var imageField = Model.ContentItem.CategoryTerm.Image;
+    //string url = (!String.IsNullOrWhiteSpace(imageField.FileName)) ? Url.Content(imageField.FileName) : string.Empty;
+}
+@tag.StartElement
+
+<a href="#">
+    @*<img src="@url" />*@
+    <h2>@Model.ContentItem.TitlePart.Title</h2>
+</a>
+
+@tag.EndElement

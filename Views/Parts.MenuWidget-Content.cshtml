@@ -1,0 +1,6 @@
+﻿@*@Display(Model.Menu)*@
+
+@foreach (var item in Model.Menu.Items)
+{
+    @Display.CategoryTile(Href: item.Href, Text: item.Text)
+}
