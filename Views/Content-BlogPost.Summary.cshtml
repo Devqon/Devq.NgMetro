@@ -8,12 +8,11 @@
 <h3><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
 <div class="metadata" style="margin-bottom: 10px;">
     <div class="published"><i class="fa fa-clock-o"></i> @Display.DateTime(DateTimeUtc: blogPost.CommonPart.PublishedUtc, CustomFormat: T("dddd, MMMM d, yyyy h:mm tt"))</div>
-    @*<i class="fa fa-clock-o"></i> <time class="clearfix" datetime="@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("yyyy-MM-dd")">@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("dddd, MMMM d, yyyy")</time>*@
     @if (Model.Tags.Items.Count > 0 && ((IEnumerable<ShowTagViewModel>)Model.Tags.Items[0].Tags).Any())
     {
         @Display(Model.Tags)
     }
-    <i class="fa fa-comments"></i> <a href="@Url.ItemDisplayUrl((IContent)blogPost)#comments-anchor">@Display(Model.CommentsCount)</a>
+    <i class="fa fa-comments"></i> <a href="@Url.ItemDisplayUrl((IContent) blogPost)#comments-anchor">@Display(Model.CommentsCount)</a>
 </div>
 
 @Display(Model.Summary)

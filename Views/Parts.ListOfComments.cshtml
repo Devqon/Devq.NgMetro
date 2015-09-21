@@ -7,7 +7,7 @@
     Model.List.Classes.Add("list-unstyled");
 }
 
-<h3 class="comment-count">@T.Plural("No Comments", "1 Comment", "{0} Comments", (int)Model.CommentCount)</h3>
+<h3 id="comments-anchor" class="comment-count">@T.Plural("No Comments", "1 Comment", "{0} Comments", (int)Model.CommentCount)</h3>
 @Display(Model.List)
 
 @* render reply button if threaded comments enabled *@
