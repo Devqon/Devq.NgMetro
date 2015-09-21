@@ -136,10 +136,6 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Devq.ExtendedBlog\Devq.ExtendedBlog.csproj">
-      <Project>{d3a2dcaa-0a80-4790-910c-9b6efa0df6a2}</Project>
-      <Name>Devq.ExtendedBlog</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Orchard.Blogs\Orchard.Blogs.csproj">
       <Project>{63fbd4d9-e1da-4a7b-aa6a-d6074fe50867}</Project>
       <Name>Orchard.Blogs</Name>
@@ -155,10 +151,6 @@
     <ProjectReference Include="..\..\Modules\Orchard.DynamicForms\Orchard.DynamicForms.csproj">
       <Project>{82190f52-2901-46d6-8a4c-34649959483f}</Project>
       <Name>Orchard.DynamicForms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Orchard.Fields\Orchard.Fields.csproj">
-      <Project>{3787dde5-e5c8-4841-bda7-dcb325388064}</Project>
-      <Name>Orchard.Fields</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Modules\Orchard.Layouts\Orchard.Layouts.csproj">
       <Project>{6bd8b2fa-f2e3-4ac8-a4c3-2925a653889a}</Project>
@@ -223,9 +215,6 @@
     <Content Include="Views\LogOn.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Menu-main-menu.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Orchard.Users\Account\AccessDenied.cshtml" />
     <Content Include="Views\Orchard.Users\Account\ChallengeEmailFail.cshtml" />
     <Content Include="Views\Orchard.Users\Account\ChallengeEmailSent.cshtml" />
@@ -255,9 +244,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Contrib.Profile\Home\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Message.cshtml" />
@@ -299,13 +285,10 @@
     <Content Include="Views\EditorTemplates\Parts.Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Content.ControlWrapper.cshtml" />
+    <Content Include="Views\Elements\Column.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Column.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Grid.cshtml" />
+    <Content Include="Views\Elements\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Parts.Layout.cshtml" />
@@ -328,9 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Content-BlogPost.Detail.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Content-User.Mini.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Animations.scss" />
@@ -356,55 +336,34 @@
     <Content Include="Views\Elements\ValidationMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Widget-SocialLinksWidget.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Parts.TagCloud.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Parts.Blogs.BlogArchives.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Parts.Search.SearchForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts.Search.SearchForm-Navigation.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Parts.Blogs.BlogPost.List.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Fields.ContentPicker-Authors.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Orchard.Tags\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Parts.Title-BlogPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Parts.Common.Metadata-BlogPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\CarouselHome.cshtml" />
+    <Content Include="Views\Parts.Search.SearchForm-Navigation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Widget-SocialWidget.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Tags\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Orchard.Tags\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Contrib.Profile\Home\Index.cshtml" />
+    <Content Include="Views\Parts.Blogs.BlogArchives.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Profile.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Content-BlogPost.Mini.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Parts\Author.Tags.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Parts\Author.Items.cshtml" />
+    <Content Include="Views\Parts\Common.Body.Summary.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

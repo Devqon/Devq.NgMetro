@@ -1,3 +1,6 @@
+@media (min-width: 979px) {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block; } }
 .profile-image {
   transition: 500ms all;
   -webkit-transition: 500ms all;
@@ -7,8 +10,26 @@
   .profile-image:hover {
     border-width: 10px; }
 
-.panel.no-padding .panel-body {
-  padding: 0; }
+html.sticky-footer {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 100px; }
+  html.sticky-footer #layout-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+  html.sticky-footer .credits {
+    margin-bottom: 20px; }
+
+ul.content-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+
+ul.archiveMonthList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
 
 #toTop {
   position: fixed;
@@ -21,12 +42,7 @@
   #toTop:hover {
     opacity: 1; }
 
-.img-author {
-  opacity: 0.7; }
-  .img-author:hover {
-    opacity: 1; }
-
-.author-items ul {
-  list-style: none; }
+.widget h1 {
+  font-size: 25px; }
 
 /*# sourceMappingURL=Site.css.map */

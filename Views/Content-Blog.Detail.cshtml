@@ -17,7 +17,7 @@
 @tag.StartElement
 <header>
     @if (AuthorizedFor(Permissions.ManageBlogs)) {
-        <a href="@Url.BlogPostCreate((BlogPart) Model.ContentItem.Get(typeof (BlogPart)))" class="add pull-right btn btn-primary"><i class="fa fa-plus-circle"></i> @T("New Post")</a>
+        <a href="@Url.BlogPostCreate((BlogPart) Model.ContentItem.Get(typeof (BlogPart)))" class="add pull-right btn btn-success"><i class="fa fa-plus-circle"></i> @T("New Post")</a>
     }
     @Display(Model.Header)
     @if (Model.Meta != null) {

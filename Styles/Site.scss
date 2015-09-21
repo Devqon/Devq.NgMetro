@@ -2,11 +2,35 @@
 @import "Base.scss";
 @import "Animations.scss";
 
-.panel.no-padding .panel-body{
-    padding: 0;
+html.sticky-footer {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 100px;
+
+    #layout-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .credits {
+        margin-bottom: 20px;
+    }
 }
 
-#toTop{
+ul.content-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.archiveMonthList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#toTop {
     position: fixed;
     right: 20px;
     bottom: 20px;
@@ -15,19 +39,13 @@
     opacity: 0.7;
     padding: 0 15px;
 
-    &:hover{
+    &:hover {
         opacity: 1;
     }
 }
 
-.img-author{
-    opacity: 0.7;
-
-    &:hover{
-        opacity: 1;
+.widget {
+    h1 {
+        font-size: 25px;
     }
-}
-
-.author-items ul{
-    list-style: none;
 }

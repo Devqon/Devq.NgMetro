@@ -2,7 +2,7 @@
 @using Devq.NgMetro.Gravatar.Html
 @using Orchard.Comments.Models
 @using Orchard.ContentManagement
-@using Orchard.Users.Models
+@using Orchard.Core.Common.Models
 
 @{
     CommentPart comment = Model.ContentPart;
@@ -12,9 +12,8 @@
         gravatarEmail = comment.Email;
     }
     else {
-        var cm = WorkContext.Resolve<IContentManager>();
-        var user = cm.Query<UserPart, UserPartRecord>().Where(x => x.NormalizedUserName == comment.UserName).List().FirstOrDefault();
-
+        var user = comment.As<CommonPart>().Owner;
+        
         if (user != null) {
             gravatarEmail = user.Email;
         }

@@ -71,28 +71,29 @@
 }
 
 <!-- Zone: Navigation -->
-@if (Model.Navigation != null)
-{
-    <div class="navbar-wrapper">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Branding -->
-                    @Display.Branding()
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="main-navigation">
-                    @Zone(Model.Navigation)
-                </div>
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Branding -->
+                @Display.Branding()
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-        </nav>
-    </div>
-}
+            <div class="collapse navbar-collapse" id="main-navigation">
+                @Zone(Model.Navigation)
+                    
+                <ul class="nav navbar-nav navbar-right">
+                    @Display.UserMenu()
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 
 <!-- Zone: Featured -->
 @if (Model.Featured != null)
