@@ -365,6 +365,15 @@
   <ItemGroup>
     <Content Include="Views\Parts\Common.Body.Summary.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CommonMetadataOwner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fields.MediaLibraryPicker-User.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Common.Owner.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

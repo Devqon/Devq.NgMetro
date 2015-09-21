@@ -1,0 +1,26 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.Core.Common.Fields
+@using Orchard.Core.Common.Models
+@using Orchard.Security
+@using Orchard.Users.Models
+@{
+    IUser owner = Model.Owner;
+    var imageField = Model.Owner.User.Image;
+    var bodyPart = owner.As<BodyPart>();
+    var nameField = owner.As<UserPart>().Fields.FirstOrDefault(f => f.Name == "DisplayName");
+    var textField = nameField != null ? nameField as TextField : null;
+    
+    var name = textField == null || string.IsNullOrEmpty(textField.Value) ? owner.UserName : textField.Value;
+}
+
+<div class="row">
+    <div class="col-lg-4">
+        <a href="@imageField.FirstMediaUrl">
+            <img class="img-responsive img-thumbnail" src="@imageField.FirstMediaUrl" alt="@owner.UserName" />
+        </a>
+    </div>
+    <div class="author-info col-lg-8">
+        <span class="author-name">@name</span>
+        @Html.Raw(bodyPart.Text)
+    </div>
+</div>

@@ -50,7 +50,8 @@
              Parts_Tags_ShowTags="Tags:0"
              Parts_Comments_Count="CommentsCount:0"
              Parts_ListOfComments="Footer:1"
-             Parts_CommentForm="Footer:2" />
+             Parts_CommentForm="Footer:2"
+             Parts_Common_Owner="/AsideSecond:before" />
     </Match>
   </Match>
 </Placement>
