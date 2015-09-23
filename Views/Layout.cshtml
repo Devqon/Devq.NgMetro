@@ -161,7 +161,9 @@
         @if (showAsideSecond)
         {
             <aside id="aside-second" class="aside-second col-md-3">
-                @Zone(Model.AsideSecond)
+                <div data-clampedwidth="#aside-second" data-spy="affix" data-offset-top="0" data-offset-bottom="200">
+                    @Zone(Model.AsideSecond)
+                </div>
             </aside>
         }
     </div>
@@ -269,6 +271,25 @@
                 event.preventDefault();
                 jQuery('html, body').animate({ scrollTop: 0 }, duration);
                 return false;
+            });
+
+            /*
+            * Clamped-width. 
+            * Usage:
+            *  <div data-clampedwidth=".myParent">This long content will force clamped width</div>
+            *
+            * Author: LV
+            */
+            $('[data-clampedwidth]').each(function () {
+                var elem = $(this);
+                var parentPanel = elem.data('clampedwidth');
+                var resizeFn = function () {
+                    var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
+                    elem.css('width', sideBarNavWidth);
+                };
+
+                resizeFn();
+                $(window).resize(resizeFn);
             });
         });
     </script>
